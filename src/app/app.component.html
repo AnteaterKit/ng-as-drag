@@ -1,0 +1,46 @@
+<div class="content">
+  <div class="side">
+
+    <div
+    cdkDropList
+    #elementsList="cdkDropList"
+    [cdkDropListData]="elements"
+    [cdkDropListConnectedTo]="[formElementsList]"
+    (cdkDropListDropped)="drop($event)"
+    
+    >
+    <div *ngFor="let item of elements" cdkDrag>
+      <div  class="component">
+        {{item}}
+      </div>
+      <div cdkDrag class="component component-todrag">
+        {{item}}
+        <div class="area-placeholder" *cdkDragPlaceholder>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   
+  </div>
+
+  <div cdkDropList
+   class="area" 
+   #formElementsList="cdkDropList"
+   [cdkDropListConnectedTo]="[elements]"
+   [cdkDropListData]="formElements"
+   (cdkDropListDropped)="drop($event)"
+   [cdkDropListConnectedTo]="[elementsList]"
+   (cdkDropListDropped)="drop($event)"
+   >
+
+   <div *ngFor="let item of formElements" cdkDrag>
+    <div cdkDrag class="component component-todrag">
+      {{item}}
+      <div class="area-placeholder" *cdkDragPlaceholder>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</div>
